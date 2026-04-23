@@ -8,8 +8,9 @@ def apply_causal_mask(scores, mask_value=-1e9):
     """
     # Write code here
     T = scores.shape[-1]
-    masked_scores = scores.copy()
 
+    masked_scores = scores.copy()
     mask = np.triu(np.full((T, T), True), k=1)
     masked_scores[..., mask] = mask_value
+    
     return masked_scores
